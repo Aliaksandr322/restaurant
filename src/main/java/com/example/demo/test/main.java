@@ -25,3 +25,6 @@ abstract class Humone{
 class Car{
 
 }
+class People{
+
+}
