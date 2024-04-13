@@ -11,6 +11,9 @@ public class main {
                 super.talk();
             }
         };
+
+
+
     }
 }
 
@@ -18,4 +21,7 @@ abstract class Humone{
     void talk() {
 
     }
+}
+class Car{
+
 }
