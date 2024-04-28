@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<body>
+<div class="replace_header" th:fragment="header">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/index}">Restaurants</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                ariacontrols="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN')" class="collapse navbar-collapse" id="navbarSupportedContent0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/restaurant/register}">Registry new restaurant</a>
+                </li>
+            </ul>
+        </div>
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" id="navbarSupportedContent3">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/restaurant/favorite}">Favorite</a>
+                </li>
+            </ul>
+        </div>
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" id="navbarSupportedContent4">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/restaurant/history}">History</a>
+                </li>
+            </ul>
+        </div>
+
+        <div sec:authorize="!isAuthenticated()" class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
+                </li>
+            </ul>
+        </div>
+        <div sec:authorize="isAuthenticated()" class="collapse navbar-collapse" id="navbarSupportedContent1">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+</div>
+</body>
+</html>

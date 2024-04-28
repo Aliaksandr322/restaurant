@@ -14,7 +14,7 @@ public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String restaurantId;
+    private String restaurantName;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

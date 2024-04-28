@@ -1,11 +1,9 @@
 
 
-function placeholderIsSupported() {
-    test = document.createElement('input');
-    return ('placeholder' in test);
+function validate(){
+    var password = document.registration.password.value;
+    if(password.length < 8){
+        alert("Пароль должен содержать минимсу 8 символов")
+        return false;
+    }
 }
-
-$(document).ready(function(){
-    placeholderSupport = placeholderIsSupported() ? 'placeholder' : 'no-placeholder';
-    $('html').addClass(placeholderSupport);
-});
