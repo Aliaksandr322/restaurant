@@ -17,5 +17,7 @@ public class TableN {
     private Integer id;
     private String tableNumber;
     private Boolean status;
-
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 }

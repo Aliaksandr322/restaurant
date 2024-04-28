@@ -1,21 +1,24 @@
 package com.example.demo.dto;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserRegistrationDto {
 
-    private String userName;
+    private Long id;
+    @NotEmpty
+    private String firstName;
+    @NotEmpty
+    private String lastName;
+    @NotEmpty(message = "Email should not be empty")
+    @Email
     private String email;
+    @NotEmpty(message = "Password should not be empty")
     private String password;
-
-    public UserRegistrationDto(String userName, String email, String password) {
-        super();
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-    }
 }

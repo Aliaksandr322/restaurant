@@ -18,8 +18,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurity {
-
-
     private final UserDetailsService userDetailsService;
 
     public SpringSecurity(UserDetailsService userDetailsService) {
@@ -34,13 +32,21 @@ public class SpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/restaurants/**").permitAll()
+                        authorize.requestMatchers("/register/**").permitAll()
+                                .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
+                                .requestMatchers("/mails/**").permitAll()
+                                .requestMatchers("/restaurant/register").hasRole("ADMIN")
+                                .requestMatchers("/restaurant/register/save").hasRole("ADMIN")
+                                .requestMatchers("/restaurant/register/delete").hasRole("ADMIN")
+                                .requestMatchers("/restaurant/register/update").hasRole("ADMIN")
+                                .requestMatchers("/restaurant/register/reservation").hasRole("ADMIN")
+                                .requestMatchers("/restaurant/**").permitAll()
                 ).formLogin(
                         form -> form
-                                .loginPage("/restaurants/login")
-                                .loginProcessingUrl("/restaurants/login")
-                                .defaultSuccessUrl("/restaurants/index")
+                                .loginPage("/login")
+                                .loginProcessingUrl("/login")
+                                .defaultSuccessUrl("/index")
                                 .permitAll()
                 ).logout(
                         logout -> logout
@@ -55,5 +61,4 @@ public class SpringSecurity {
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
-    
 }

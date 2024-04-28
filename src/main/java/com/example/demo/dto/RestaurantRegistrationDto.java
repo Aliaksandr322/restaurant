@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.enums.TypeOfRestaurant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,11 +8,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestaurantDto {
+public class RestaurantRegistrationDto {
 
     private String restaurantName;
     private String address;
-    private Double rating;
-    //TODO
+    private String workTime;
+    private TypeOfRestaurant restaurantType;
+    private String phoneNumber;
 
 }
